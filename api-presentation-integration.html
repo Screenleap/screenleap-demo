@@ -1,19 +1,17 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Share your screen</title>
     <meta name="robots" content="noindex"/>
     <meta name="description" content="Reference integration for the Screenleap API."/>
-    <link rel="stylesheet" href="https://d2e4kn0wu3avrd.cloudfront.net/css/0ba831a5d06f3f3fe53f98534ee14e7c/style.css" type="text/css" media="screen">    
+    <link rel="stylesheet" href="/css/style.scss" type="text/css" media="screen">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ilikegbphpdmfjbmipgclmbhloghljag">
     <base href="https://www.screenleap.com">
+<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ilikegbphpdmfjbmipgclmbhloghljag">
 </head>
 <body id="presenter" class="marketing">
 <script type="text/javascript">
-        try {
-        window.onerror = function(){return true};
-    } catch (e){log(e)}
         function addOnload(func) {
         if (typeof func != 'function')
             return;
@@ -68,17 +66,17 @@
         <ol id="chromeMacInstructions">
                 <li>
         Click on the <b>ScreenShare.dmg</b> file at the bottom of your browser window.<br>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/b4315f694663563af8d07a5fd65b068f/instructions/mac_api_native_chrome_download_bar.png" width="403" height="46" style="margin-top:12px;margin-bottom:12px" alt=""/>    </li>
+        <img src="/img/instructions/mac_api_native_chrome_download_bar.png" width="403" height="46" style="margin-top:12px;margin-bottom:12px" alt=""/>    </li>
     <li>
         Double-click the <b>ScreenShare.app</b> icon.<br>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/5c00ef46370cac289c47ad90ad86c584/instructions/mac_api_native_finder_window.png" width="403" height="141" style="margin-top:12px;margin-bottom:12px" alt=""/><br>
+        <img src="/img/instructions/mac_api_native_finder_window.png" width="403" height="141" style="margin-top:12px;margin-bottom:12px" alt=""/><br>
     </li>
     <li>
         Click <b>Open</b> when the dialog opens.<br>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/3e3fc871e7fe2dc8b7c5d16f9542290d/instructions/mac_api_native_chrome_open_dialog.png" width="403" height="177" style="margin-top:12px" alt=""/>    </li>
+        <img src="/img/instructions/mac_api_native_chrome_open_dialog.png" width="403" height="177" style="margin-top:12px" alt=""/>    </li>
         <li class="custom-protocol">
         After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to open the dialog below.<br>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/11c4828b49e8c0a07723c46464a30fc1/instructions/mac_native_chrome_custom_protocol_handler.png" style="margin-top:12px;margin-bottom:12px" alt=""/><br>
+        <img src="/img/instructions/mac_native_chrome_custom_protocol_handler.png" style="margin-top:12px;margin-bottom:12px" alt=""/><br>
         Check <b>Remember my choice</b> and click <b>Launch Application</b>.<br>
     </li>
         </ol>
@@ -87,13 +85,13 @@
         <ol id="chromeWinInstructions">
         <li>
         Click on the screenleap.exe file that you just downloaded to run it.<br/>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/1d38e4026972a95853533f1233c61b89/instructions/win_native_chrome_download_bar.png" width="549" height="42" style="margin-top:12px;margin-bottom:12px" alt=""/>    </li>
+        <img src="/img/instructions/win_native_chrome_download_bar.png" width="549" height="42" style="margin-top:12px;margin-bottom:12px" alt=""/>    </li>
     <li>
         Click <b>Run</b> when the security dialog opens.<br>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/c10548dd0df12c5b0f1f99adf03b6e37/instructions/win_native_security_dialog_screenshare.png" style="margin-top:12px" alt=""/>    </li>
+        <img src="/img/instructions/win_native_security_dialog_screenshare.png" style="margin-top:12px" alt=""/>    </li>
         <li class="custom-protocol">
         After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to open the dialog below.<br>
-        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/33904e15d2a3d17d23dbf8e68fb4e687/instructions/win_native_chrome_custom_protocol_handler_screenshare.png" style="margin-top:12px;margin-bottom:12px" alt=""/>        <br>
+        <img src="/img/instructions/win_native_chrome_custom_protocol_handler_screenshare.png" style="margin-top:12px;margin-bottom:12px" alt=""/>        <br>
         Check <b>Remember my choice</b> and click <b>Launch Application</b>.<br>
     </li>
                             </ol>
@@ -102,7 +100,7 @@
 </div>
 <img id="screenleapNativeDownloadArrow" src="/img/green_arrow.png" width="101" height="250" alt="">
 <div id="nativeStarting" class="sheet" style="display:none">
-    <h2 class="first">Starting...<img src="https://d2e4kn0wu3avrd.cloudfront.net/img/90ed01607b940e30536074de93b0ab46/indicator.gif" class="indicator" alt=""/></h2>
+    <h2 class="first">Starting...<img src="/img/indicator.gif" class="indicator" alt=""/></h2>
     <hr>
     <p>This can sometimes take up to 10 seconds. Thank you for your patience.</p>
 </div>
@@ -227,8 +225,8 @@
 <script type="text/javascript" src="/js/tools.js"></script> <!-- used to create some of the UI elements used on this page -->
 <script type="text/javascript" src="https://api.screenleap.com/js/screenleap.js"></script>
 <script type="text/javascript">
-
-    /**
+            screenleap.setOptions({serverEnv: 'dev'});
+        /**
      * Callback function that gets called when the native app is being downloaded.
      */
     function onNativeDownloadStart() {
@@ -311,29 +309,19 @@
 
     function doStartSharing() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/share', true);
+        xhr.open('POST', 'https://tuyen-macbookpro.screenleap.com/v2/screen-shares', true);
         xhr.timeout = 20000;
+        xhr.setRequestHeader('accountId', getParameterByName("accountId"));
+        xhr.setRequestHeader('authtoken', getParameterByName("authtoken"));
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     if (!screenleap.isAppInstalled()) {
-                        screenleap.setOptions({delayAfterDownloadBeforeCallingCustomProtocolHandler: 30000, showScreenShareStartErrorDelay:20000});
+                    screenleap.setOptions({delayAfterDownloadBeforeCallingCustomProtocolHandler: 30000, showScreenShareStartErrorDelay:20000});
                     }
                     var screenShareData = JSON.parse(xhr.responseText);
                     document.getElementById('viewerUrl').innerText = screenShareData.viewerUrl;
-                    if (screenleap.getDefaultPresenterAppType() === 'IN_BROWSER') {
-                        screenleap.checkIsExtensionEnabledWithChromeAppId('ilikegbphpdmfjbmipgclmbhloghljag', function() {
-                            startScreenShare(screenShareData);
-                        }, function() {
-                            screenleap.checkIsExtensionInstalled(function() {
-                                showDialog('#enableExtensionInstructions');
-                            }, function() {
-                                screenleap.installExtension();
-                            });
-                        });
-                    } else {
-                        startScreenShare(screenShareData);
-                    }
+                    startScreenShare(screenShareData);
                 } else {
                     showErrorMessage('We were not able to start the screen share because there was an issue in creating the screen share.');
                 }
