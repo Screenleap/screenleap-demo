@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share your screen</title>
+    <meta name="robots" content="noindex"/>
+    <meta name="description" content="Reference integration for the Screenleap API."/>
+    <link rel="stylesheet" href="https://d2e4kn0wu3avrd.cloudfront.net/css/0ba831a5d06f3f3fe53f98534ee14e7c/style.css" type="text/css" media="screen">    
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ilikegbphpdmfjbmipgclmbhloghljag">
+</head>
+<body id="presenter" class="marketing">
+<script type="text/javascript">
+        try {
+        window.onerror = function(){return true};
+    } catch (e){log(e)}
+        function addOnload(func) {
+        if (typeof func != 'function')
+            return;
+        if (typeof window.onload == 'undefined' || typeof window.onload != 'function')
+            window.onload = func;
+        else {
+            var oldOnload = window.onload;
+            window.onload = function(){
+                try{
+                    oldOnload();
+                } catch(e) {
+                    logException(e);
+                }
+                func();
+            }
+        }
+    }
+</script>
+<div class="site-content site-nav-content">
+    <div id="startSharingInstructions" class="sheet">
+        <h2 class="first">Share your screen</h2>
+        <hr>
+        <p>This page serves as a reference implementation for integrating with the native presenter app. You can use the code on this page as a starting point for your own integration. We have tried to incorporate as much best practices into this page as possible to allow you to get started as quickly as possible.</p>
+        <p>If you are on a Mac or Windows computer, the native presenter apps will be used to share your screen. Otherwise, if you are using Chrome (either from a Chromebook or from a Linux computer), then the browser extension will be used.</p>
+        <button onclick="startSharing()" class="primary big-button">Start sharing</button>
+    </div>
+</div>
+<div id="enableExtensionInstructions" class="sheet" style="display:none">
+    <h4 class="dark-red">The ScreenShare extension is installed but has been disabled.</h4>
+    <hr>
+    <p style="margin-bottom:0">To re-enable the extension:</p>
+    <ol>
+        <li>Click the Options icon (icon with three lines) on the right side of the browser toolbar.</li>
+        <li>Select <b>Settings</b>.</li>
+        <li>Click on the <b>Extensions</b> option on the left side of the page.</li>
+        <li>Check the <b>Enabled</b> checkbox for the <b>ScreenShare</b> extension.</li>
+    </ol>
+</div>
+<div id="sharingInstructions" class="sheet" style="display:none">
+    <h2 class="first">Your screen is <span class="positive bold">shared</span></h2>
+    <hr>
+    <p>Viewers can see your screen by going to <span id="viewerUrl" class="bold"></span>.</p>
+    <br>
+    <button onclick="stopSharing()" class="primary-red big-button">Stop sharing</button>
+</div>
+<div id="nativeInstallationInstructions" class="sheet" style="display:none">
+    <h4 style="margin-bottom:12px">Downloading app...</h4>
+    <div class="install-native-instructions">
+        <p>Your download should start in seconds. If it doesn't, <a href="#" onclick="return screenleap.downloadAndStartNativeApp()" class="underline">restart the download</a>.</p>
+        <hr>
+        <span class="mac" style="display:none">
+        <ol id="chromeMacInstructions">
+                <li>
+        Click on the <b>ScreenShare.dmg</b> file at the bottom of your browser window.<br>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/b4315f694663563af8d07a5fd65b068f/instructions/mac_api_native_chrome_download_bar.png" width="403" height="46" style="margin-top:12px;margin-bottom:12px" alt=""/>    </li>
+    <li>
+        Double-click the <b>ScreenShare.app</b> icon.<br>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/5c00ef46370cac289c47ad90ad86c584/instructions/mac_api_native_finder_window.png" width="403" height="141" style="margin-top:12px;margin-bottom:12px" alt=""/><br>
+    </li>
+    <li>
+        Click <b>Open</b> when the dialog opens.<br>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/3e3fc871e7fe2dc8b7c5d16f9542290d/instructions/mac_api_native_chrome_open_dialog.png" width="403" height="177" style="margin-top:12px" alt=""/>    </li>
+        <li class="custom-protocol">
+        After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to open the dialog below.<br>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/11c4828b49e8c0a07723c46464a30fc1/instructions/mac_native_chrome_custom_protocol_handler.png" style="margin-top:12px;margin-bottom:12px" alt=""/><br>
+        Check <b>Remember my choice</b> and click <b>Launch Application</b>.<br>
+    </li>
+        </ol>
+        </span>
+        <span class="win" style="display:none">
+        <ol id="chromeWinInstructions">
+        <li>
+        Click on the screenleap.exe file that you just downloaded to run it.<br/>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/1d38e4026972a95853533f1233c61b89/instructions/win_native_chrome_download_bar.png" width="549" height="42" style="margin-top:12px;margin-bottom:12px" alt=""/>    </li>
+    <li>
+        Click <b>Run</b> when the security dialog opens.<br>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/c10548dd0df12c5b0f1f99adf03b6e37/instructions/win_native_security_dialog_screenshare.png" style="margin-top:12px" alt=""/>    </li>
+        <li class="custom-protocol">
+        After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to open the dialog below.<br>
+        <img src="https://d2e4kn0wu3avrd.cloudfront.net/img/33904e15d2a3d17d23dbf8e68fb4e687/instructions/win_native_chrome_custom_protocol_handler_screenshare.png" style="margin-top:12px;margin-bottom:12px" alt=""/>        <br>
+        Check <b>Remember my choice</b> and click <b>Launch Application</b>.<br>
+    </li>
+                            </ol>
+        </span>
+    </div>
+</div>
+<img id="screenleapNativeDownloadArrow" src="/img/green_arrow.png" width="101" height="250" alt="">
+<div id="nativeStarting" class="sheet" style="display:none">
+    <h2 class="first">Starting...<img src="https://d2e4kn0wu3avrd.cloudfront.net/img/90ed01607b940e30536074de93b0ab46/indicator.gif" class="indicator" alt=""/></h2>
+    <hr>
+    <p>This can sometimes take up to 10 seconds. Thank you for your patience.</p>
+</div>
+<div id="startCustomProtocolHandlerErrorMessage" class="troubleshooting-message sheet" style="display:none;width:660px">
+    <h4 class="dark-red">We were not able to start your screen share.</h4>
+    <hr style="margin:24px 0"/>
+    <span class="safari" style="display:none"><p>After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to start the screen share.</p></span>
+    <span class="not-safari" style="display:none"><p>After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to open the dialog below.</p></span>
+    <span class="mac" style="display:none"><img class="mac-custom-protocol-handler-image" style="margin-top:12px;margin-bottom:12px" alt=""/></span>
+    <span class="win" style="display:none"><img class="win-custom-protocol-handler-image" style="margin-top:12px;margin-bottom:12px" alt=""/></span>
+    <span class="firefox" style="display:none">
+    <p>Select the <b>ScreenShare Start Application</b>, check <b>Remember my choice</b>, and click <b>OK</b>.</p>
+    </span>
+    <span class="msie" style="display:none">
+    <p>Uncheck <b>Always ask before opening</b> and click <b>Allow</b>.</p>
+    </span>
+    <span class="chrome" style="display:none">
+    <p>Check <b>Remember my choice</b> and click <b><span class="chrome" style="display:none">Launch Application</span><span class="safari" style="display:none">OK</span></b>.</p>
+    </span>
+    <br>
+    <p>If you continue to experience problems, please <a href="/support?shareUsingNative=true" class="underline">contact us</a> for assistance.</p>
+</div>
+<div id="retryCustomProtocolHandlerMessage" class="troubleshooting-message sheet" style="display:none">
+    <h4 class="dark-red">We were not able to start your screen share.</h4>
+    <hr style="margin:24px 0"/>
+    <ol>
+        <li>If you haven't yet done so, please <a href="#" onclick="return screenleap.downloadAndStartNativeApp()" class="bold underline">download the app</a> now.</li>
+        <li class="msie" style="display:none">
+            Click <b>Run</b> when you see the prompt below.<br>
+            <span class="not-msie8"><img src="/img/instructions/win_native_msie_custom_protocol_handler_screenshare_run.png" width="608" height="50" style="margin-top:12px;margin-bottom:12px" alt=""/><br></span>
+            <span class="msie8"><img src="/img/instructions/win_native_msie8_custom_protocol_handler_screenshare_run.png" width="404" height="267" style="margin-top:12px;margin-bottom:12px" alt=""/><br></span>
+        </li>
+        <li class="msie8" style="display:none">
+            Click <b>Run</b> again when you see the prompt below.<br>
+            <img src="/img/instructions/win_native_msie8_security_warning_screenshare.png" width="464" height="211" style="margin-top:12px;margin-bottom:12px" alt=""/>
+        </li>
+        <li class="not-msie" style="display:none">Please be sure to click on the downloaded app to install it.</li>
+        <li class="safari" style="display:none">After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to start the screen share.</li>
+        <li class="not-safari" style="display:none">After the app is installed, <a href="#" onclick="return screenleap.startAppUsingCustomProtocolHandler()" class="bold underline">click here</a> to open the dialog below.</li>
+        <li class="mac" style="list-style-type:none;display:none"><img class="mac-custom-protocol-handler-image" style="margin-top:12px;margin-bottom:12px" alt=""/></li>
+        <li class="win" style="list-style-type:none;display:none"><img class="win-custom-protocol-handler-image" style="margin-top:12px;margin-bottom:12px" alt=""/></li>
+        <li class="firefox" style="display:none">Select the <b>Screenleap Start Application</b>, check <b>Remember my choice</b>, and click <b>OK</b>.</li>
+        <li class="msie" style="list-style-type:none;display:none">Uncheck <b>Always ask before opening</b> and click <b>Allow</b>.</li>
+        <li class="chrome" style="list-style-type:none;display:none">Check <b>Remember my choice</b> and click <b><span class="chrome" style="display:none">Launch Application</span><span class="safari" style="display:none">OK</span></b>.</li>
+        <li style="list-style-type:none"><br>If you continue to experience problems, please <a href="/support?shareUsingNative=true" class="underline">contact us</a> for assistance.</li>
+    </ol>
+    <br>
+</div>
+<div id="appConnectionFailure" class="sheet" style="display:none">
+    <h4 class="dark-red">Presenter app connection failure</h4>
+    <hr>
+    <p>We were not able to connect to the presenter app. Please note that the API demo page does not work if you are
+        sharing your screen from behind a proxy with SSL turned off.</p>
+    <br>
+    <p>To get the non-SSL option to work with your own implementation for users behind a proxy, your page should use
+        the http:// protocol.</p>
+    <br>
+    <p>We only use SSL on the demo page because our API integration is done in JavaScript so that you can see the integration.
+        We have to include the <code>authtoken</code> on the page in order to do so. To protect your <code>authtoken</code>,
+        your implementation should use server-side API integration.</p>
+</div>
+<div id="enableExtensionInstructions" class="sheet" style="display:none">
+    <h4 class="dark-red">The ScreenShare extension is installed but has been disabled.</h4>
+    <hr>
+    <p style="margin-bottom:0">To re-enable the extension:</p>
+    <ol>
+        <li>Click the Options icon (icon with three lines) on the right side of the browser toolbar.</li>
+        <li>Select <b>Settings</b>.</li>
+        <li>Click on the <b>Extensions</b> option on the left side of the page.</li>
+        <li>Check the <b>Enabled</b> checkbox for the <b>ScreenShare</b> extension.</li>
+    </ol>
+</div>
+<script type="text/javascript">
+    addOnload(function(){
+        // enable appropriate instructions
+        if (screenleap.isMac) {
+            $('.mac').show();
+        }
+        if (screenleap.isWin) {
+            $('.win').show();
+        }
+        if (screenleap.isChrome) {
+            $('.chrome').show();
+        }
+        if (screenleap.isFirefox) {
+            $('.firefox').show();
+        }
+        if (screenleap.isMSIE) {
+            $('.msie').show();
+        } else {
+            $('.not-msie').show();
+        }
+        if (screenleap.isMSIE8) {
+            $('.not-msie8').hide();
+            $('.msie8').show();
+        }
+        if (screenleap.isSafari) {
+            $('.safari').show();
+        } else {
+            $('.not-safari').show();
+        }
+        // show appropriate screenshots
+        var macCustomProtocolHandlerImage = null;
+        var winCustomProtocolHandlerImage = null;
+        if (screenleap.isChrome) {
+            macCustomProtocolHandlerImage = '/img/instructions/mac_native_chrome_custom_protocol_handler.png';
+            winCustomProtocolHandlerImage = '/img/instructions/win_native_chrome_custom_protocol_handler_screenshare.png';
+        } else if (screenleap.isFirefox) {
+            macCustomProtocolHandlerImage = '/img/instructions/mac_native_firefox_custom_protocol_handler.png';
+            winCustomProtocolHandlerImage = '/img/instructions/win_native_firefox_custom_protocol_handler.png';
+        } else if (screenleap.isMSIE) {
+            winCustomProtocolHandlerImage = '/img/instructions/win_native_msie_custom_protocol_handler_screenshare.png';
+        } else {
+            macCustomProtocolHandlerImage = '/img/spacer.gif';
+            winCustomProtocolHandlerImage = '/img/spacer.gif';
+        }
+        $('.mac-custom-protocol-handler-image').attr('src', macCustomProtocolHandlerImage);
+        $('.win-custom-protocol-handler-image').attr('src', winCustomProtocolHandlerImage);
+    });
+</script>
+<script type="text/javascript" src="/js/jquery.js"></script> <!-- used to create some of the UI elements used on this page -->
+<script type="text/javascript" src="/js/tools.js"></script> <!-- used to create some of the UI elements used on this page -->
+<script type="text/javascript" src="https://api.screenleap.com/js/screenleap.js"></script>
+<script type="text/javascript">
+
+    /**
+     * Callback function that gets called when the native app is being downloaded.
+     */
+    function onNativeDownloadStart() {
+        if (screenleap.isChrome) {
+            setTimeout(bounceNativeDownloadArrow, 7000);
+        }
+    }
+
+    /**
+     * Callback function that gets called when the we try to start the presenter app.
+     */
+    function onScreenShareStarting() {
+        if (!$('#retryCustomProtocolHandlerMessage').is(':visible')) {
+            $('#startSharingInstructions').fadeOut(function(){
+                showSheet(screenleap.isAppInstalled() ? '#nativeStarting' : '#nativeInstallationInstructions');
+            });
+        }
+    }
+
+    /**
+     * Callback function that gets called when the running presenter app is unable to connect with the app server.
+     */
+    function onAppConnectionFailed() {
+        showSheet('#appConnectionFailure');
+        screenleap.onScreenShareEnd();
+    }
+
+    /**
+     * Callback function that gets called when there is a problem starting the screen share.
+     */
+    function onScreenShareStartError() {
+        if (screenleap.getUseCustomProtocol()) {
+            if (!screenleap.isScreenShareStarted()) {
+                var downloadAttempted = document.getElementById('screenleapDownloader');
+                var errorMessageContainerId = downloadAttempted ? '#startCustomProtocolHandlerErrorMessage' : '#retryCustomProtocolHandlerMessage';
+                $('.sheet').hide();
+                showSheet(errorMessageContainerId);
+            }
+        } else {
+            showErrorMessage("Failed to start screen share");
+        }
+    }
+
+    /**
+     * Callback function that gets called when the screen share ends.
+     * You can implement to update the UI or redirect the user to another page after the screen share ends.
+     */
+    function onScreenShareEnd() {
+        showSheet('startSharingInstructions');
+    }
+
+    /**
+     * Called when the screen share successfully starts.
+     */
+    screenleap.onScreenShareStart = function () {
+        $('#screenleapNativeDownloadArrow').hide();
+        showSheet('#sharingInstructions');
+        $('body').addClass('sharing');
+    };
+
+    /**
+     * Called when the screen share ends.
+     */
+    screenleap.onScreenShareEnd = function () {
+        showSheet('#startSharingInstructions');
+        showUserMessage('Your screen share has ended.');
+    };
+
+    screenleap.onRecordStartError = function() {
+      	showErrorMessage('We were unable to start recording your screen share due to a site issue. You should alert your user and reset the recording UI.');
+	};
+
+    function startSharing() {
+        if (screenleap.requiresUserGestureInitiatedDownload(screenleap.getDefaultPresenterAppType()) && !screenleap.isAppInstalled()) {
+            screenleap.downloadNativeApp(doStartSharing);
+        } else {
+            doStartSharing();
+        }
+    }
+
+    function doStartSharing() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/share', true);
+        xhr.timeout = 20000;
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    if (!screenleap.isAppInstalled()) {
+                        screenleap.setOptions({delayAfterDownloadBeforeCallingCustomProtocolHandler: 30000, showScreenShareStartErrorDelay:20000});
+                    }
+                    var screenShareData = JSON.parse(xhr.responseText);
+                    document.getElementById('viewerUrl').innerText = screenShareData.viewerUrl;
+                    if (screenleap.getDefaultPresenterAppType() === 'IN_BROWSER') {
+                        screenleap.checkIsExtensionEnabledWithChromeAppId('ilikegbphpdmfjbmipgclmbhloghljag', function() {
+                            startScreenShare(screenShareData);
+                        }, function() {
+                            screenleap.checkIsExtensionInstalled(function() {
+                                showDialog('#enableExtensionInstructions');
+                            }, function() {
+                                screenleap.installExtension();
+                            });
+                        });
+                    } else {
+                        startScreenShare(screenShareData);
+                    }
+                } else {
+                    showErrorMessage('We were not able to start the screen share because there was an issue in creating the screen share.');
+                }
+                xhr = null;
+            }
+        };
+        xhr.send();
+    }
+
+    function startScreenShare(screenShareData) {
+        screenleap.startSharing(screenleap.getDefaultPresenterAppType(),
+                screenShareData,
+                {nativeDownloadStarting: onNativeDownloadStart,
+                 screenShareStarting: onScreenShareStarting,
+                 appConnectionFailed: onAppConnectionFailed,
+                 screenShareStartError: onScreenShareStartError,
+                 onScreenShareEnd: onScreenShareEnd});
+    }
+
+    function stopSharing() {
+        screenleap.stopSharing();
+    }
+
+    screenleap.error = function(action, errorMessage, xhr) {
+        var msg = action + ': ' + errorMessage;
+        if (xhr) {
+            msg += ' (' + xhr.status + ')';
+        }
+        showErrorMessage(msg);
+    };
+
+    function bounceNativeDownloadArrow() {
+        if (document.getElementById('screenleapNativeDownloadArrow')) {
+            document.getElementById('screenleapNativeDownloadArrow').className = 'animated bounceInDown';
+            setTimeout(function(){$('#screenleapNativeDownloadArrow').fadeOut()}, 8000);
+        }
+    }
+    </script>
+</body>
+</html>
