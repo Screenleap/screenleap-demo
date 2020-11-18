@@ -7,7 +7,7 @@
     <meta name="description" content="Reference integration for the Screenleap API."/>
     <link rel="stylesheet" href="https://stage.screenleap.com/css/style.css" type="text/css" media="screen">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico">
-    <base href="https://stage.screenleap.com">
+    <base href="https://dev.screenleap.com">
 <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ilikegbphpdmfjbmipgclmbhloghljag">
 </head>
 <body id="presenter" class="marketing">
@@ -309,7 +309,7 @@
 
     function doStartSharing() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://tuyen-macbookpro.screenleap.com/v2/screen-shares', true);
+        xhr.open('POST', 'https://dev.screenleap.com/v2/screen-shares', true);
         xhr.timeout = 20000;
         xhr.setRequestHeader('accountId', getParameterByName("accountId"));
         xhr.setRequestHeader('authtoken', getParameterByName("authtoken"));
