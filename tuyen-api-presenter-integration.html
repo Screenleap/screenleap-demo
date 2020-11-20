@@ -223,7 +223,7 @@
 </script>
 <script type="text/javascript" src="/js/jquery.js"></script> <!-- used to create some of the UI elements used on this page -->
 <script type="text/javascript" src="/js/tools.js"></script> <!-- used to create some of the UI elements used on this page -->
-<script type="text/javascript" src="/js/screenleap.js"></script>
+<script type="text/javascript" src="https://dev.screenleap.com/js/screenleap.js"></script>
 <script type="text/javascript">
             screenleap.setOptions({serverEnv: 'dev'});
         /**
@@ -309,7 +309,7 @@
 
     function doStartSharing() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/v2/screen-shares', true);
+        xhr.open('POST', 'https://dev.screenleap.com/v2/screen-shares', true);
         xhr.timeout = 20000;
         xhr.setRequestHeader('accountId', getParameterByName("accountId"));
         xhr.setRequestHeader('authtoken', getParameterByName("authtoken"));
