@@ -1,7 +1,7 @@
 
 Accessible from https://screenleap.github.io/screenleap-demo/
 
-For each of the URL, you will need to add the "accountId" and "authtoken" query parameters with the values from your API account for the page to work.
+For each of the URL, you will need to add the **accountId** and **authtoken** query parameters with the values from your API account for the page to work.
 
 ### API Reference Integration
 * Tuyen: https://screenleap.github.io/screenleap-demo/tuyen-api-presenter-integration.html
