@@ -5,8 +5,8 @@ For each of the URL, you will need to add the **accountId** and **authtoken** qu
 
 ### API Reference Integration
 * Tuyen: <a href="https://screenleap.github.io/screenleap-demo/tuyen-api-presenter-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/tuyen-api-presenter-integration.html</a>
-* Stage: https://screenleap.github.io/screenleap-demo/stage-api-presenter-integration.html
-* Production: https://screenleap.github.io/screenleap-demo/prod-api-presenter-integration.html
+* Stage: <a href="https://screenleap.github.io/screenleap-demo/stage-api-presenter-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/stage-api-presenter-integration.html</a>
+* Production: <a href="https://screenleap.github.io/screenleap-demo/prod-api-presenter-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/prod-api-presenter-integration.html</a>
 
 ### Screenleap Premium Subscription
 * Emedded viewer (stage): https://screenleap.github.io/screenleap-demo/embedded-viewer.html
