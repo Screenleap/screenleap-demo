@@ -225,6 +225,7 @@
 <script type="text/javascript" src="/js/tools.js"></script> <!-- used to create some of the UI elements used on this page -->
 <script type="text/javascript" src="https://api.screenleap.com/js/screenleap.js"></script>
 <script type="text/javascript">
+	var presenterAppType = (isMac || isWin) && !window.location.href.indexOf("ifree=true") ? "NATIVE" : "IFREE";
             screenleap.setOptions({serverEnv: 'dev'});
         /**
      * Callback function that gets called when the native app is being downloaded.
@@ -300,7 +301,7 @@
 	};
 
     function startSharing() {
-        if (screenleap.requiresUserGestureInitiatedDownload(screenleap.getDefaultPresenterAppType()) && !screenleap.isAppInstalled()) {
+        if (presenterAppType != 'IFREE' && screenleap.requiresUserGestureInitiatedDownload(presenterAppType) && !screenleap.isAppInstalled()) {
             screenleap.downloadNativeApp(doStartSharing);
         } else {
             doStartSharing();
@@ -309,7 +310,7 @@
 
     function doStartSharing() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://api.screenleap.com/v2/screen-shares', true);
+        xhr.open('POST', 'https://api.screenleap.com/v2/screen-shares?presenterAppType=' + presenterAppType, true);
         xhr.timeout = 20000;
         xhr.setRequestHeader('accountId', getParameterByName("accountId"));
         xhr.setRequestHeader('authtoken', getParameterByName("authtoken"));
@@ -317,7 +318,7 @@
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     if (!screenleap.isAppInstalled()) {
-                    screenleap.setOptions({delayAfterDownloadBeforeCallingCustomProtocolHandler: 30000, showScreenShareStartErrorDelay:20000});
+                    	screenleap.setOptions({delayAfterDownloadBeforeCallingCustomProtocolHandler: 30000, showScreenShareStartErrorDelay:20000});
                     }
                     var screenShareData = JSON.parse(xhr.responseText);
                     document.getElementById('viewerUrl').innerText = screenShareData.viewerUrl;
@@ -332,7 +333,7 @@
     }
 
     function startScreenShare(screenShareData) {
-        screenleap.startSharing(screenleap.getDefaultPresenterAppType(),
+        screenleap.startSharing(presenterAppType,
                 screenShareData,
                 {nativeDownloadStarting: onNativeDownloadStart,
                  screenShareStarting: onScreenShareStarting,
