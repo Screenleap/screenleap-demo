@@ -309,7 +309,7 @@
 
     function doStartSharing() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://dev.screenleap.com/v2/screen-shares', true);
+        xhr.open('POST', 'https://dev.screenleap.com/v2/screen-shares?presenterAppType=IFREE', true);
         xhr.timeout = 20000;
         xhr.setRequestHeader('accountId', getParameterByName("accountId"));
         xhr.setRequestHeader('authtoken', getParameterByName("authtoken"));
