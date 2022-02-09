@@ -3,8 +3,8 @@ Accessible from https://screenleap.github.io/screenleap-demo/
 
 ### Screenleap Integration
 Tuyen  
-* Stage (Presenter): https://screenleap.github.io/screenleap-demo/stage-screenleap-presenter-integration.html
-* Stage (Viewer): https://screenleap.github.io/screenleap-demo/stage-screenleap-viewer-integration.html
+* Stage (Presenter): https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-presenter-integration.html
+* Stage (Viewer): https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-viewer-integration.html
 
 Hann  
 * Stage (Presenter): https://screenleap.github.io/screenleap-demo/hann-stage-screenleap-presenter-integration.html
