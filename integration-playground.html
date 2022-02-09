@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Screenleap Integration Playground</title>
+    <meta name="robots" content="index, follow"/>
+    <meta name="description" content="Screen share instantly for free using Screenleap."/>
+    <meta property="og:site_name" content="Screenleap"/>
+</head>
+<body>
+<style type="text/css">
+    #roomTitle {
+        color: #999;
+        font-size: 36px;
+        height: 50vh;
+        line-height: 60px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div id="roomTitle">Integration Playground</div>
+<form onsubmit="return false" style="text-align: center">
+    <input
+        id="screenleapSnippet"
+        name="screenleapSnippet"
+        type="text"
+        value=""
+        size="100"
+        placeholder="Paste the code snippet" />
+    <p><button onclick="return loadScript()">Load Script</button></p>
+</form>
+<script>
+    function loadScript(){
+        localStorage.setItem("screenleap/codeSnippet", document.getElementById("screenleapSnippet").value);
+        location.reload();
+    }
+    const snippetText = localStorage.getItem("screenleap/codeSnippet");
+    if (snippetText) {
+        document.getElementById("screenleapSnippet").value = snippetText;
+        const snippet = new DOMParser().parseFromString(snippetText, "text/html").scripts[0];
+        const script = document.createElement("script");
+        script.src = snippet.src;
+        script.dataset.param = snippet.dataset.param;
+        document.head.appendChild(script);
+    }
+</script>
+</body>
+</html>
