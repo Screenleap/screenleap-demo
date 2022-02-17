@@ -39,10 +39,13 @@
     if (snippetText) {
         document.getElementById("screenleapSnippet").value = snippetText;
         const snippet = new DOMParser().parseFromString(snippetText, "text/html").scripts[0];
-        const script = document.createElement("script");
-        script.src = snippet.src;
-        script.dataset.param = snippet.dataset.param;
-        document.head.appendChild(script);
+        const src = new URL(snippet.src);
+        if (src.protocol == "https:" && src.pathname == "/screenleap.js" && src.hostname.endsWith(".screenleap.com")) {
+            const script = document.createElement("script");
+            script.src = src.toString();
+            script.dataset.param = new URLSearchParams(snippet.dataset.param).toString();
+            document.head.appendChild(script);
+        }
     }
 </script>
 </body>
