@@ -4,15 +4,15 @@ Accessible from https://screenleap.github.io/screenleap-demo/
 
 Playground
 
-- Presenter: <a href="https://screenleap.github.io/screenleap-demo/integration-playground.html?screenleap-role=presenter" target="_blank">https://screenleap.github.io/screenleap-demo/integration-playground.html?screenleap-role=presenter</a>
-- Viewer: <a href="https://screenleap.github.io/screenleap-demo/integration-playground.html" target="_blank">https://screenleap.github.io/screenleap-demo/integration-playground.html</a>
+- Presenter: [https://screenleap.github.io/screenleap-demo/integration-playground.html?<mark>screenleap-role=presenter</mark>](https://screenleap.github.io/screenleap-demo/integration-playground.html?screenleap-role=presenter)
+- Viewer: [https://screenleap.github.io/screenleap-demo/integration-playground.html](https://screenleap.github.io/screenleap-demo/integration-playground.html)
 
 Tuyen
 
-- Stage (Presenter): <a href="https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-presenter-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-presenter-integration.html</a>
-- Stage (Viewer): <a href="https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-viewer-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-viewer-integration.html</a>
-- Prod (Presenter): <a href="https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-presenter-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-presenter-integration.htm</a>
-- Prod (Viewer): <a href="https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-viewer-integration.html" target="_blank">https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-viewer-integration.html</a>
+- Stage (Presenter): [https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-presenter-integration.html](https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-presenter-integration.html)
+- Stage (Viewer): [https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-viewer-integration.html](https://screenleap.github.io/screenleap-demo/tuyen-stage-screenleap-viewer-integration.html)
+- Prod (Presenter): [https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-presenter-integration.html](https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-presenter-integration.html)
+- Prod (Viewer): [https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-viewer-integration.html](https://screenleap.github.io/screenleap-demo/tuyen-prod-screenleap-viewer-integration.html)
 
 For each of the URL, you will need to add the **accountId** and **authtoken** query parameters with the values from your API account for the page to work.
 
