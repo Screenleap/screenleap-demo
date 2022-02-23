@@ -4,7 +4,7 @@ Accessible from https://screenleap.github.io/screenleap-demo/
 
 Playground
 
-- Presenter: [https://screenleap.github.io/screenleap-demo/integration-playground.html?<mark>screenleap-role=presenter</mark>](https://screenleap.github.io/screenleap-demo/integration-playground.html?screenleap-role=presenter)
+- Presenter: [https://screenleap.github.io/screenleap-demo/integration-playground.html?screenleap-role=presenter](https://screenleap.github.io/screenleap-demo/integration-playground.html?screenleap-role=presenter)
 - Viewer: [https://screenleap.github.io/screenleap-demo/integration-playground.html](https://screenleap.github.io/screenleap-demo/integration-playground.html)
 
 Tuyen
