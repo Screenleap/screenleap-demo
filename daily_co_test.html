@@ -1,0 +1,8 @@
+// Example: load daily-js and embed a call
+<script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
+<script>
+  function createFrameAndJoinRoom() {
+    window.callFrame = window.DailyIframe.createFrame();
+    callFrame.join({ url: https://tuyen.daily.co/test-call });
+  }
+</script>
